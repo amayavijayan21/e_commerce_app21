@@ -116,6 +116,34 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                             ),
                           ],
                         ),
+                        
+// Category
+Text(
+  product.category.isNotEmpty
+      ? '${product.category[0].toUpperCase()}${product.category.substring(1)}'
+      : '',
+  style: const TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: Colors.blueGrey,
+  ),
+),
+const SizedBox(height: 6),
+
+// Rating row
+Row(
+  children: [
+    Icon(Icons.star, color: Colors.amber, size: 20),
+    const SizedBox(width: 4),
+    Text(
+      "${product.ratingRate} (${product.ratingCount} reviews)",
+      style: const TextStyle(
+        fontSize: 14,
+        color: Colors.black54,
+      ),
+    ),
+  ],
+),
                         const SizedBox(height: 8),
                         Text(
                           "₹${product.price}",
