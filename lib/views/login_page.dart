@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,7 +10,7 @@ class LoginPage extends StatelessWidget {
   final TextEditingController passwordController =
       TextEditingController(text: "83r5^_");
 
-  final RxBool isPasswordVisible = false.obs;    
+  final RxBool isPasswordVisible = false.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -47,73 +45,75 @@ class LoginPage extends StatelessWidget {
                         const SizedBox(height: 30),
                         // Username
                         Container(
-  decoration: BoxDecoration(
-    color: Colors.white,
-    borderRadius: BorderRadius.circular(12),
-    boxShadow: const [
-      BoxShadow(
-        color: Colors.black12,
-        blurRadius: 6,
-        offset: Offset(0, 2),
-      )
-    ],
-  ),
-  child: TextField(
-    controller: usernameController,
-    decoration: const InputDecoration(
-      border: InputBorder.none,
-      hintText: "Username",
-      prefixIcon: Padding(
-        padding: EdgeInsets.only(top: 4), // adjust vertical alignment
-        child: Icon(Icons.person_outline, color: Colors.grey, size: 25),
-      ),
-    ),
-  ),
-),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.black12,
+                                blurRadius: 6,
+                                offset: Offset(0, 2),
+                              )
+                            ],
+                          ),
+                          child: TextField(
+                            controller: usernameController,
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "Username",
+                              prefixIcon: Padding(
+                                padding: EdgeInsets.only(
+                                    top: 4), // adjust vertical alignment
+                                child: Icon(Icons.person_outline,
+                                    color: Colors.grey, size: 25),
+                              ),
+                            ),
+                          ),
+                        ),
 
                         const SizedBox(height: 15),
 
-
-
-Container(
-  decoration: BoxDecoration(
-    color: Colors.white,
-    borderRadius: BorderRadius.circular(12),
-    boxShadow: const [
-      BoxShadow(
-        color: Colors.black12,
-        blurRadius: 6,
-        offset: Offset(0, 2),
-      )
-    ],
-  ),
-  child: Obx(() => TextField(
-        controller: passwordController,
-        obscureText: !isPasswordVisible.value, // toggle visibility
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: "Password",
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 16), // keeps text centered
-          prefixIcon: const Padding(
-            padding: EdgeInsets.only(top: 2),
-            child: Icon(Icons.lock_outline, color: Colors.grey, size: 22),
-          ),
-          suffixIcon: IconButton(
-            icon: Icon(
-              isPasswordVisible.value
-                  ? Icons.visibility
-                  : Icons.visibility_off,
-              color: Colors.grey,
-            ),
-            onPressed: () {
-              isPasswordVisible.value = !isPasswordVisible.value;
-            },
-          ),
-        ),
-      )),
-),
-
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.black12,
+                                blurRadius: 6,
+                                offset: Offset(0, 2),
+                              )
+                            ],
+                          ),
+                          child: Obx(() => TextField(
+                                controller: passwordController,
+                                obscureText: !isPasswordVisible
+                                    .value, // toggle visibility
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Password",
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      vertical: 16), // keeps text centered
+                                  prefixIcon: const Padding(
+                                    padding: EdgeInsets.only(top: 2),
+                                    child: Icon(Icons.lock_outline,
+                                        color: Colors.grey, size: 22),
+                                  ),
+                                  suffixIcon: IconButton(
+                                    icon: Icon(
+                                      isPasswordVisible.value
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                      color: Colors.grey,
+                                    ),
+                                    onPressed: () {
+                                      isPasswordVisible.value =
+                                          !isPasswordVisible.value;
+                                    },
+                                  ),
+                                ),
+                              )),
+                        ),
 
                         const SizedBox(height: 20),
 
@@ -134,8 +134,9 @@ Container(
                             child: const Text(
                               "Login",
                               style: TextStyle(
-                                color: Colors.white,
-                                  fontSize: 18, fontWeight: FontWeight.bold),
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
@@ -174,6 +175,3 @@ Container(
     );
   }
 }
-
-
-
