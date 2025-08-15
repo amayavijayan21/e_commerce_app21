@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -95,7 +96,7 @@ class ProductListPage extends StatelessWidget {
               crossAxisCount: 2,
               crossAxisSpacing: 12,
               mainAxisSpacing: 12,
-              childAspectRatio: 0.8,
+              childAspectRatio: 0.7,
             ),
             itemCount: productController.products.length,
             itemBuilder: (context, index) {
@@ -120,8 +121,8 @@ class ProductListPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ClipRRect(
-                        borderRadius:
-                            const BorderRadius.vertical(top: Radius.circular(12)),
+                        borderRadius: const BorderRadius.vertical(
+                            top: Radius.circular(12)),
                         child: Image.network(
                           product.image,
                           height: 180,
@@ -135,6 +136,16 @@ class ProductListPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
+                              product.category.isNotEmpty
+                                  ? '${product.category[0].toUpperCase()}${product.category.substring(1)}'
+                                  : '',
+                              style: const TextStyle(
+                                fontSize: 12,
+                                color: Colors.grey,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
                               product.title,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
@@ -143,6 +154,30 @@ class ProductListPage extends StatelessWidget {
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
+                            const SizedBox(height: 4),
+                            // ⭐ Rating bar + count
+                            Row(
+                              children: [
+                                RatingBarIndicator(
+                                  rating: product.ratingRate,
+                                  itemBuilder: (context, index) => const Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                  ),
+                                  itemCount: 5,
+                                  itemSize: 16,
+                                  direction: Axis.horizontal,
+                                ),
+                                const SizedBox(width: 4),
+                                Text(
+                                  "(${product.ratingCount})",
+                                  style: const TextStyle(
+                                      fontSize: 12, color: Colors.grey),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 10),
+
                             const SizedBox(height: 15),
                             Center(
                               child: Text(
@@ -168,8 +203,3 @@ class ProductListPage extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
