@@ -150,7 +150,6 @@ class LoginPage extends StatelessWidget {
                               style: TextStyle(color: Colors.deepOrange)),
                         ),
 
-                        const SizedBox(height: 20),
 
                         // Signup link
                         Row(
